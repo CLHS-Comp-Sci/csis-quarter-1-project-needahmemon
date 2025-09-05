@@ -1,0 +1,43 @@
+package f1sim;
+
+public class Car {
+    /*
+    Ok so here id have like:
+    Vars: String name, double lapTime, double totalTime, String tireType,
+    double tireCondition (where 100 is new and 0 is worn out), int stops
+    so if 0 is worn out for hards and lets say 20 is worn for mediums, i guess 40 should be worn out for softs?
+
+   methods would probs be:
+   updateLap, needsPitStop, pitStop, getName, getLapTime, getTotalTime, getTireCondition, getPitStops
+   should I add setters? Yeah probably if I wanna add user input for tire types..
+     */
+    private String name;
+    private double lapTime;
+    private double totalTime;
+    private String tireType;
+    private double tireCondition;
+    private int stops;
+
+    public Car(String name, double lapTime, double totalTime, String tireType, double tireCondition, int stops)
+    {
+        this.name = name;
+        this.lapTime = lapTime;
+        this.totalTime = totalTime;
+        this.tireType = tireType;
+        this.tireCondition = tireCondition;
+        this.stops = stops;
+    }
+
+
+    public void needsPitStop()
+    {
+        if(tireType = "Softs" && tireCondition<=40)
+        {
+            stops++;
+            tireCondition = 100;
+            //ADD IMPORTS, check is this is correct? I don't think so yikes.
+            lapTime += Math.random()*35-20;
+
+        }
+    }
+}
