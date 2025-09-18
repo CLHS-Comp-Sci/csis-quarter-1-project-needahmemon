@@ -1,52 +1,73 @@
 package f1sim;
 
-import java.util.ArrayList;
-public class Race
-{
-    private ArrayList<Car> cars;
-    private int totalLaps;
+public class Car {
+    /*
 
-    public Race (int totalLaps)
+    Ok so here id have like:
+    Vars: String name, double lapTime, double totalTime, String tireType,
+    double tireCondition (where 100 is new and 0 is worn out), int stops
+    so if 0 is worn out for hards and lets say 20 is worn for mediums, i guess 40 should be worn out for softs?
+
+   methods would probs be:
+   updateLap, needsPitStop, pitStop, getName, getLapTime, getTotalTime, getTireCondition, getPitStops
+
+   should I add setters? Yeah probably if I wanna add user input for tire types..
+     */
+    private String name;
+    private double lapTime;
+    private double totalTime;
+    private String tireType;
+    private double tireCondition;
+    private int stops;
+
+    public Car(String name, double lapTime, double totalTime, String tireType, double tireCondition, int stops)
     {
-        this.cars = new ArrayList<>;
-        this.totalLaps = totalLaps;
+        this.name = name;
+        this.lapTime = lapTime;
+        this.totalTime = totalTime;
+        this.tireType = tireType;
+        this.tireCondition = tireCondition;
+        this.stops = stops;
     }
 
-    public void addCar(Car car)
-    {
-        cars.add(car);
-    }
 
-    public void startRace
+    public void needsPitStop()
     {
-        for(int lap = 1; lap<=1; lap++)
+        if(tireCondition <= 20 && tireType == "Hards")
         {
-            System.out.println("Lap " + lap + ";");
-        }
+            stops++;
+            tireCondition = 100;
+            //ADD IMPORTS, check is this is correct? I don't think so yikes.
+            lapTime += Math.random()*35-20;
 
-        for(Car car : cars)
+        }
+        else if(tireCondition <=40 && tireType == "Mediums")
         {
-            car.updateLap();
-            //uhh. need to make this method :( im blanking so bad here. Would it be in this class? Maybe
+            stops++;
+            tireCondition = 100;
+            lapTime += Math.random()*35-20;
+        }
+        else if(tireCondition <= 60 && tireType == "Softs")
+        {
+            stops++;
+            tireCondition = 100;
+            lapTime += Math.random()*35-20;
         }
     }
 
-    public void updateLap()
+    public void setTireType(String tire)
     {
-        //ok so here I need to update based off of needsPitstop in car class
-        //also need to add the times to total time
-        //oh right tire condition needs to be updated- maybe like. it happens based off tire type?
-        //but how would deg work per lap?
-        //OH maybe I can make a baseline and change needsPitstop.
-        //Can do like. tireCondition hits a baseline, and it just takes longer to degrade if its hards, instead of having
-        //diff tirecondition baselines for tiretypes
-        //uh. isnt this the same though? liek if its varying tire condition levels and tire deg is at the same baseline?
-        //yeah may as well stick with that. might have to rethink
-        //for now, tirecondition baseline/minimum is determining when a pitstop is needed, based off tireType
-        //and tireDeg is the same. I kind of want to change it to where tireDeg is different and the min is the same,
-        //but the math is confusing me right now.
+        tireType = tire;
+    }
 
+    public double getTireCondition()
+    {
+        return tireCondition;
+    }
 
+    public void setTireCondition(double condition)
+    {
+        tireCondition = condition;
     }
 
 }
