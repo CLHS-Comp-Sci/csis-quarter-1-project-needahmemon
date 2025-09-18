@@ -1,0 +1,52 @@
+package f1sim;
+
+import java.util.ArrayList;
+public class Race
+{
+    private ArrayList<Car> cars;
+    private int totalLaps;
+
+    public Race (int totalLaps)
+    {
+        this.cars = new ArrayList<>;
+        this.totalLaps = totalLaps;
+    }
+
+    public void addCar(Car car)
+    {
+        cars.add(car);
+    }
+
+    public void startRace
+    {
+        for(int lap = 1; lap<=1; lap++)
+        {
+            System.out.println("Lap " + lap + ";");
+        }
+
+        for(Car car : cars)
+        {
+            car.updateLap();
+            //uhh. need to make this method :( im blanking so bad here. Would it be in this class? Maybe
+        }
+    }
+
+    public void updateLap()
+    {
+        //ok so here I need to update based off of needsPitstop in car class
+        //also need to add the times to total time
+        //oh right tire condition needs to be updated- maybe like. it happens based off tire type?
+        //but how would deg work per lap?
+        //OH maybe I can make a baseline and change needsPitstop.
+        //Can do like. tireCondition hits a baseline, and it just takes longer to degrade if its hards, instead of having
+        //diff tirecondition baselines for tiretypes
+        //uh. isnt this the same though? liek if its varying tire condition levels and tire deg is at the same baseline?
+        //yeah may as well stick with that. might have to rethink
+        //for now, tirecondition baseline/minimum is determining when a pitstop is needed, based off tireType
+        //and tireDeg is the same. I kind of want to change it to where tireDeg is different and the min is the same,
+        //but the math is confusing me right now.
+
+
+    }
+
+}
