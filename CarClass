@@ -1,43 +1,52 @@
 package f1sim;
 
-public class Car {
-    /*
-    Ok so here id have like:
-    Vars: String name, double lapTime, double totalTime, String tireType,
-    double tireCondition (where 100 is new and 0 is worn out), int stops
-    so if 0 is worn out for hards and lets say 20 is worn for mediums, i guess 40 should be worn out for softs?
+import java.util.ArrayList;
+public class Race
+{
+    private ArrayList<Car> cars;
+    private int totalLaps;
 
-   methods would probs be:
-   updateLap, needsPitStop, pitStop, getName, getLapTime, getTotalTime, getTireCondition, getPitStops
-   should I add setters? Yeah probably if I wanna add user input for tire types..
-     */
-    private String name;
-    private double lapTime;
-    private double totalTime;
-    private String tireType;
-    private double tireCondition;
-    private int stops;
-
-    public Car(String name, double lapTime, double totalTime, String tireType, double tireCondition, int stops)
+    public Race (int totalLaps)
     {
-        this.name = name;
-        this.lapTime = lapTime;
-        this.totalTime = totalTime;
-        this.tireType = tireType;
-        this.tireCondition = tireCondition;
-        this.stops = stops;
+        this.cars = new ArrayList<>;
+        this.totalLaps = totalLaps;
     }
 
-
-    public void needsPitStop()
+    public void addCar(Car car)
     {
-        if(tireType = "Softs" && tireCondition<=40)
-        {
-            stops++;
-            tireCondition = 100;
-            //ADD IMPORTS, check is this is correct? I don't think so yikes.
-            lapTime += Math.random()*35-20;
+        cars.add(car);
+    }
 
+    public void startRace
+    {
+        for(int lap = 1; lap<=1; lap++)
+        {
+            System.out.println("Lap " + lap + ";");
+        }
+
+        for(Car car : cars)
+        {
+            car.updateLap();
+            //uhh. need to make this method :( im blanking so bad here. Would it be in this class? Maybe
         }
     }
+
+    public void updateLap()
+    {
+        //ok so here I need to update based off of needsPitstop in car class
+        //also need to add the times to total time
+        //oh right tire condition needs to be updated- maybe like. it happens based off tire type?
+        //but how would deg work per lap?
+        //OH maybe I can make a baseline and change needsPitstop.
+        //Can do like. tireCondition hits a baseline, and it just takes longer to degrade if its hards, instead of having
+        //diff tirecondition baselines for tiretypes
+        //uh. isnt this the same though? liek if its varying tire condition levels and tire deg is at the same baseline?
+        //yeah may as well stick with that. might have to rethink
+        //for now, tirecondition baseline/minimum is determining when a pitstop is needed, based off tireType
+        //and tireDeg is the same. I kind of want to change it to where tireDeg is different and the min is the same,
+        //but the math is confusing me right now.
+
+
+    }
+
 }
